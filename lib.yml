@@ -1,0 +1,176 @@
+---
+book:
+- title: Calf
+  author: &1 !ruby/object:Author
+    name: Masha K.
+    biography: ''
+- title: My struggle
+  author: &2 !ruby/object:Author
+    name: Schicklgruber A.
+    biography: ''
+- title: Calf
+  author: !ruby/object:Author
+    name: Dasha F.
+    biography: ''
+- title: Calf
+  author: !ruby/object:Author
+    name: Dasha F.
+    biography: ''
+- title: Calf
+  author: !ruby/object:Author
+    name: Dasha F.
+    biography: ''
+- title: Calf
+  author: &3 !ruby/object:Author
+    name: Dasha F.
+    biography: ''
+reader:
+- name: Marina
+  email: Marina@mail.com
+  city: Dnepr
+  street: Petrovskogo
+  house: 33
+- name: Petya
+  email: Petya@mail.com
+  city: Kiev
+  street: Khreshatik
+  house: 46
+- name: Vasya
+  email: Vasya@mail.com
+  city: Kiev
+  street: Khreshatik
+  house: 1
+order:
+- date: '2018-11-06 21:03:40 +0000'
+  book: !ruby/object:Book
+    title: Calf
+    author: *1
+  reader: !ruby/object:Reader
+    name: Marina
+    email: Marina@mail.com
+    city: Dnepr
+    street: Petrovskogo
+    house: 33
+- date: '2018-11-06 21:04:34 +0000'
+  book: !ruby/object:Book
+    title: Calf
+    author: !ruby/object:Author
+      name: Masha K.
+      biography: ''
+  reader: !ruby/object:Reader
+    name: Marina
+    email: Marina@mail.com
+    city: Dnepr
+    street: Petrovskogo
+    house: 33
+- date: '2018-11-06 21:04:37 +0000'
+  book: !ruby/object:Book
+    title: Calf
+    author: !ruby/object:Author
+      name: Masha K.
+      biography: ''
+  reader: !ruby/object:Reader
+    name: Marina
+    email: Marina@mail.com
+    city: Dnepr
+    street: Petrovskogo
+    house: 33
+- date: '2018-11-06 21:04:40 +0000'
+  book: !ruby/object:Book
+    title: Calf
+    author: !ruby/object:Author
+      name: Masha K.
+      biography: ''
+  reader: !ruby/object:Reader
+    name: Marina
+    email: Marina@mail.com
+    city: Dnepr
+    street: Petrovskogo
+    house: 33
+- date: '2018-11-06 21:06:35 +0000'
+  book: !ruby/object:Book
+    title: My struggle
+    author: *2
+  reader: !ruby/object:Reader
+    name: Petya
+    email: Petya@mail.com
+    city: Kiev
+    street: Khreshatik
+    house: 46
+- date: '2018-11-06 21:07:00 +0000'
+  book: !ruby/object:Book
+    title: My struggle
+    author: !ruby/object:Author
+      name: Schicklgruber A.
+      biography: ''
+  reader: !ruby/object:Reader
+    name: Petya
+    email: Petya@mail.com
+    city: Kiev
+    street: Khreshatik
+    house: 46
+- date: '2018-11-07 12:20:27 +0000'
+  book: !ruby/object:Book
+    title: Calf
+    author: !ruby/object:Author
+      name: Masha K.
+      biography: ''
+  reader: !ruby/object:Reader
+    name: Vasya
+    email: Vasya@mail.com
+    city: Kiev
+    street: Khreshatik
+    house: 1
+- date: '2018-11-08 07:48:54 +0000'
+  book: !ruby/object:Book
+    title: Calf
+    author: *3
+  reader: !ruby/object:Reader
+    name: Vasya
+    email: Vasya@mail.com
+    city: Kiev
+    street: Khreshatik
+    house: 1
+- date: '2018-11-08 07:59:10 +0000'
+  book: !ruby/object:Book
+    title: Learn Ruby in 24 Hours or Less
+    author: !ruby/object:Author
+      name: Robert Dwight
+      biography: ''
+  reader: !ruby/object:Reader
+    name: Vasya
+    email: Vasya@mail.com
+    city: Kiev
+    street: Khreshatik
+    house: 1
+- date: '2018-11-08 08:00:14 +0000'
+  book: !ruby/object:Book
+    title: Learn Ruby in 24 Hours or Less
+    author: !ruby/object:Author
+      name: Robert Dwight
+      biography: ''
+  reader: !ruby/object:Reader
+    name: Marina
+    email: Marina@mail.com
+    city: Dnepr
+    street: Petrovskogo
+    house: 33
+- date: '2018-11-08 08:00:57 +0000'
+  book: !ruby/object:Book
+    title: Learn Ruby in 24 Hours or Less
+    author: !ruby/object:Author
+      name: Robert Dwight
+      biography: ''
+  reader: !ruby/object:Reader
+    name: Petya
+    email: Petya@mail.com
+    city: Kiev
+    street: Khreshatik
+    house: 46
+author:
+- name: Masha K.
+  biography: ''
+- name: Schicklgruber A.
+  biography: ''
+- name: Dasha F.
+  biography: ''
