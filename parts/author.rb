@@ -1,7 +1,5 @@
-require_relative '../validation/validate'
-#  Define class
 class Author
-  attr_accessor :name, :biography
+  attr_reader :name, :biography
   include Validate
   def initialize(name, biography = '')
     @name = name

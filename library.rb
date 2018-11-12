@@ -1,11 +1,12 @@
+require_relative 'validation/errors'
+require_relative 'validation/validate'
 require_relative 'parts/author'
 require_relative 'parts/book'
 require_relative 'parts/reader'
 require_relative 'parts/order'
 require 'yaml'
-# main class
 class Library
-  attr_accessor :book, :reader, :order, :author
+  attr_reader :book, :reader, :order, :author
   def initialize
     lib = YAML.load(File.read('lib.yml'))
     lib['book'] ? @book = lib['book'] : @book = {}
@@ -15,42 +16,39 @@ class Library
   end
 
   def add(arg)
-    cl_nm = arg.class.name.downcase
-    xz = self.instance_variable_get("@#{cl_nm}")
-    unless %w[book author reader order].index(cl_nm).nil?
-      xz << hashed(arg)
-      self.instance_variable_set("@#{cl_nm}", xz)
+    class_name = arg.class.name.downcase
+    unless %w[book author reader order].index(class_name).nil?
+    old_value = self.instance_variable_get("@#{class_name}")
+      old_value << hashed(arg)
+      self.instance_variable_set("@#{class_name}", old_value)
     else
-      ArgumentError.new("#{cl_nm} not in allowed list of Classes!")
+      ArgumentError.new("#{class_name} not in allowed list of Classes!")
     end
   end
 
-  def hashed(xxx)
+  def hashed(klass)
     hash = {}
-    xxx.instance_variables.each { |var| hash[var.to_s.delete('@')] = xxx.instance_variable_get(var) }
+    klass.instance_variables.each { |var| hash[var.to_s.delete('@')] = klass.instance_variable_get(var) }
     hash
   end
 
-  def top_reader(count = 1)
-    puts self.top('reader', count)
-  end
-  def top(entity, count)
-    temp_h = Hash.new(0)
-    entity == 'book' ? @order.each { |row| temp_h[row[entity].title] += 1 } : @order.each { |row| temp_h[row[entity].name] += 1 }
-    temp_h.sort_by { |_, v| -v }.first(count).map(&:first)
-  end
-   
   def most_popular_books(count = 1)
-    puts self.top('book', count)
+    grouped = @order.group_by{ |row| [row['book'].title, row['book'].author.name] }
+    return grouped.sort_by { |k, v| -v.size }.first(count).map{ |k,v| v[0]['book'] }
   end
-
+  
+  def top_reader(count = 1)
+    grouped = @order.group_by{ |row| [row['reader'].name, row['reader'].email] }
+    return grouped.sort_by { |k, v| -v.size }.first(count).map{ |k,v| v[0]['reader'] }
+  end
+  
   def count_top_readers(count = 3)
-    books_names = self.top('book', count)
+    top_books = self.most_popular_books(count)
     arr = []
-    books_names.each do |book_title|
-    @order.each { |row| arr << row['reader'].name if book_title == row['book'].title }
+    top_books.each do |book|
+    @order.each { |row| arr << row['reader']  if book <=> row['book'] }
     end
-    puts arr.uniq.size
+    return arr.uniq.size
   end
 
   def save

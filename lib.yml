@@ -167,10 +167,24 @@ order:
     city: Kiev
     street: Khreshatik
     house: 46
+- date: '2018-11-11 22:08:24 +0000'
+  book: !ruby/object:Book
+    title: Learn Ruby in 24 Hours or Less223
+    author: !ruby/object:Author
+      name: Robert Dwight2
+      biography: ''
+  reader: !ruby/object:Reader
+    name: Petya
+    email: Petya@mail.com
+    city: Kiev
+    street: Khreshatik
+    house: 46
 author:
 - name: Masha K.
   biography: ''
 - name: Schicklgruber A.
   biography: ''
 - name: Dasha F.
+  biography: ''
+- name: Robert Miles
   biography: ''

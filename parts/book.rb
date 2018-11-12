@@ -1,13 +1,14 @@
-require_relative '../validation/validate'
-require_relative 'author'
-#  Define class
 class Book
-  attr_accessor :title, :author
+  attr_reader :title, :author
   include Validate
+  include CustomErrors
   def initialize(title, author)
-    @title = title
-    ArgumentError.new('Must be instance of Author!') unless author.is_a? Author
-    @author = author
     validate_s! title
+    @title = title
+    if author.is_a? Author
+      @author = author
+    else
+      raise ArgumentInstanceError.new("Author")
+    end
   end
 end
